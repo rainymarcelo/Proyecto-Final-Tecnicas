@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="contenerdorPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoFinal.controller.ContenedorPrincipalController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#mnuSalir_action" text="Salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="administrador">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#mnuRegistrarTrabajador_action" text="Registrar trabajador" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuNegocio" text="Operaciones realizadas" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Trabajador">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#mnuRegistrarVenta" text="Vendedor" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuRegistrarMantenimiento" text="Mecanico" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
