@@ -2,15 +2,22 @@ package ProyectoFinal.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import javax.swing.text.html.ImageView;
+import java.awt.*;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ContenedorPrincipalController {
 
     @FXML
     private BorderPane contenerdorPrincipal;
+
+    @FXML
+    private ImageView ivImg;
 
     public void mnuSalir_action(){
         System.exit(0);

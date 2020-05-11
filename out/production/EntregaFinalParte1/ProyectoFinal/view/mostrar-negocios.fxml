@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="493.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoFinal.controller.NegociosController">
+   <children>
+      <VBox prefHeight="493.0" prefWidth="1505.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="1574.0" text="Ventas" />
+            <TableView fx:id="tblVenta" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                  <TableColumn fx:id="clmFechaV" prefWidth="156.00003051757812" text="Fecha venta " />
+                <TableColumn fx:id="clmCredencialV" prefWidth="149.0" text="Credencial vendedor" />
+                <TableColumn fx:id="clmNombreClienteV" minWidth="0.0" prefWidth="109.0" text="Nombre cliente" />
+                  <TableColumn fx:id="clmCedulaClienteV" prefWidth="115.0" text="Cedula cliente" />
+                  <TableColumn fx:id="clmMatriculaV" prefWidth="130.0" text="Matricula carro" />
+                  <TableColumn fx:id="clmMarcaV" prefWidth="131.0" text="Marca carro" />
+                  <TableColumn fx:id="clmModeloV" prefWidth="125.0" text="Modelo carro" />
+                  <TableColumn fx:id="clmTipoV" prefWidth="111.0" text="Tipo carro" />
+                  <TableColumn fx:id="clmValorV" prefWidth="167.0" text="Valor venta" />
+              </columns>
+            </TableView>
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="1448.0" text="Mantenimieto o reparaciones" />
+            <TableView fx:id="tblMantenimiento" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                  <TableColumn fx:id="clmFechaM" prefWidth="158.0" text="fecha mantenimiento" />
+                <TableColumn fx:id="clmCredencialM" prefWidth="135.0" text="Credencial mecanico" />
+                <TableColumn fx:id="clmNombreClienteM" prefWidth="119.0" text="Nombre cliente" />
+                  <TableColumn fx:id="clmCedulaClienteM" prefWidth="116.0" text="Cedula cliente" />
+                  <TableColumn fx:id="clmMatriculaM" prefWidth="127.0" text="Matricula carro" />
+                  <TableColumn fx:id="clmMarcaM" prefWidth="131.0" text="Marca carro" />
+                  <TableColumn fx:id="clmModeloM" prefWidth="119.0" text="Modelo carro" />
+                  <TableColumn fx:id="clmTipoM" prefWidth="123.0" text="Tipo carro" />
+                  <TableColumn fx:id="clmValorM" prefWidth="167.0" text="Valor mantenimiento" />
+                  <TableColumn fx:id="clmDescripcionM" prefWidth="309.0" text="Descripcion" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

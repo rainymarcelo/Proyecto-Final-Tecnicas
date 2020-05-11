@@ -16,7 +16,10 @@ import java.util.List;
 
 public class VendedorController {
     ObservableList<String> pagoList= FXCollections.observableArrayList("Si","No");
+    ObservableList<String> tipoList=FXCollections.observableArrayList("Sedan","Todoterreno","Deportivo");
 
+    @FXML
+    private ChoiceBox<String> cbTipo;
     @FXML
     private ChoiceBox<String> cbPago;
 
@@ -45,9 +48,6 @@ public class VendedorController {
     private TextField txtMarca;
 
     @FXML
-    private TextField txtTipo;
-
-    @FXML
     private TextField txtValor;
 
     private VendedorBsn vendedorBsn=new VendedorBsn();
@@ -59,6 +59,7 @@ public class VendedorController {
         ObservableList<String> credenciales=FXCollections.observableArrayList(vendedors);
         cbVendedores.setItems(credenciales);
         cbPago.setItems(pagoList);
+        cbTipo.setItems(tipoList);
 
     }
 
@@ -71,7 +72,7 @@ public class VendedorController {
         String matricula=txtMatricula.getText();
         String modelo=txtModelo.getText();
         String color=txtColor.getText();
-        String tipo=txtTipo.getText();
+        String tipo=cbTipo.getValue();
         String valor=(txtValor.getText());
         String vendedor=cbVendedores.getValue();
         Date fecha= Calendar.getInstance().getTime();
@@ -138,7 +139,6 @@ public class VendedorController {
         txtMatricula.clear();
         txtModelo.clear();
         txtNombre.clear();
-        txtTipo.clear();
         txtValor.clear();
     }
 

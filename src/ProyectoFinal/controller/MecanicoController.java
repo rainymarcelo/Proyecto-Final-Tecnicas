@@ -19,6 +19,10 @@ import java.util.List;
 public class MecanicoController {
 
     ObservableList<String> pagoList= FXCollections.observableArrayList("Si","No");
+    ObservableList<String> tipoList=FXCollections.observableArrayList("Sedan","Todoterreno","Deportivo");
+
+    @FXML
+    private ChoiceBox<String> cbTipo;
 
     @FXML
     private ChoiceBox<String> cbMecanicos;
@@ -48,9 +52,6 @@ public class MecanicoController {
     private TextField txtMarca;
 
     @FXML
-    private TextField txtTipo;
-
-    @FXML
     private TextField txtValor;
 
     @FXML
@@ -65,6 +66,7 @@ public class MecanicoController {
         ObservableList<String> credenciales=FXCollections.observableArrayList(mecanicos);
         cbMecanicos.setItems(credenciales);
         cbPago.setItems(pagoList);
+        cbTipo.setItems(tipoList);
     }
 
     public void btnGuardar_action(){
@@ -75,7 +77,7 @@ public class MecanicoController {
         String matricula=txtMatricula.getText();
         String modelo=txtModelo.getText();
         String color=txtColor.getText();
-        String tipo=txtTipo.getText();
+        String tipo=cbTipo.getValue();
         String valor=txtValor.getText();
         String mecanico=cbMecanicos.getValue();
         String descripcion=txtDescripcion.getText();
@@ -144,7 +146,6 @@ public class MecanicoController {
         txtMatricula.clear();
         txtModelo.clear();
         txtNombre.clear();
-        txtTipo.clear();
         txtValor.clear();
         txtDescripcion.clear();
     }
