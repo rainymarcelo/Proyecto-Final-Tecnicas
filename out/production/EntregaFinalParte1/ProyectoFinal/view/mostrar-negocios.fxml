@@ -3,12 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="493.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoFinal.controller.NegociosController">
+<AnchorPane prefHeight="493.0" prefWidth="1490.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoFinal.controller.NegociosController">
    <children>
-      <VBox prefHeight="493.0" prefWidth="1505.0">
+      <VBox layoutX="7.0" prefHeight="493.0" prefWidth="1477.0">
          <children>
             <Label alignment="CENTER" prefHeight="35.0" prefWidth="1574.0" text="Ventas" />
-            <TableView fx:id="tblVenta" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tblVenta" prefHeight="200.0" prefWidth="1470.0">
               <columns>
                   <TableColumn fx:id="clmFechaV" prefWidth="156.00003051757812" text="Fecha venta " />
                 <TableColumn fx:id="clmCredencialV" prefWidth="149.0" text="Credencial vendedor" />
