@@ -4,6 +4,7 @@ import ProyectoFinal.bsn.exception.ObjetoYaExisteException;
 import ProyectoFinal.dao.VendedorDao;
 import ProyectoFinal.dao.exception.LlaveDuplicadaException;
 import ProyectoFinal.dao.impl.VendedorDaoList;
+import ProyectoFinal.dao.impl.VendedorDaoNio;
 import ProyectoFinal.model.Personas.Vendedor;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class VendedorBsn {
     private VendedorDao vendedorDao;
 
     public VendedorBsn(){
-        this.vendedorDao=new VendedorDaoList();
+        this.vendedorDao=new VendedorDaoNio();
     }
 
     public void registrarVendedor(Vendedor vendedor) throws ObjetoYaExisteException {

@@ -29,7 +29,10 @@
       </MenuBar>
    </top>
    <center>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../logo-dj-taller-mecanico.png" />
+         </image></ImageView>
    </center>
    <bottom>
       <Label prefHeight="57.0" prefWidth="285.0" text="El horario de atencion es de: 8 am - 4 pm L-V" BorderPane.alignment="CENTER" />

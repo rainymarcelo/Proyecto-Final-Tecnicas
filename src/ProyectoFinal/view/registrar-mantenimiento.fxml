@@ -80,6 +80,6 @@
             </GridPane>
          </children>
       </VBox>
-      <Button layoutX="314.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnGuardar_action" text="Guardar" />
+      <Button layoutX="318.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnGuardar_action" text="Guardar" />
    </children>
 </AnchorPane>

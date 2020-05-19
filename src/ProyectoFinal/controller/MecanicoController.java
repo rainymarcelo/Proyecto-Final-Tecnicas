@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,8 +19,8 @@ import java.util.List;
 
 public class MecanicoController {
 
-    ObservableList<String> pagoList= FXCollections.observableArrayList("Si","No");
-    ObservableList<String> tipoList=FXCollections.observableArrayList("Sedan","Todoterreno","Deportivo");
+    ObservableList<String> pagoList = FXCollections.observableArrayList("Si", "No");
+    ObservableList<String> tipoList = FXCollections.observableArrayList("Sedan", "Todoterreno", "Deportivo");
 
     @FXML
     private ChoiceBox<String> cbTipo;
@@ -57,36 +58,84 @@ public class MecanicoController {
     @FXML
     private TextField txtDescripcion;
 
-    private MecanicoBsn mecanicoBsn=new MecanicoBsn();
-    private MantenimientoBsn mantenimientoBsn=new MantenimientoBsn();
+    private MecanicoBsn mecanicoBsn = new MecanicoBsn();
+    private MantenimientoBsn mantenimientoBsn = new MantenimientoBsn();
 
     @FXML
-    public void initialize(){
-        List<String> mecanicos=mecanicoBsn.listarCredenciales();
-        ObservableList<String> credenciales=FXCollections.observableArrayList(mecanicos);
+    public void initialize() {
+        List<String> mecanicos = mecanicoBsn.listarCredenciales();
+        ObservableList<String> credenciales = FXCollections.observableArrayList(mecanicos);
         cbMecanicos.setItems(credenciales);
         cbPago.setItems(pagoList);
         cbTipo.setItems(tipoList);
+
+        txtCedula.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtCedula.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        }));
+
+        txtValor.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtValor.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        }));
+
+        txtNombre.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtNombre.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        }));
+
+        txtApellidos.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtApellidos.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        }));
+
+        txtMarca.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtMarca.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        }));
+
+        txtModelo.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtModelo.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        }));
+
+        txtColor.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                txtColor.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+        }));
+
+        txtCedula.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtCedula.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        }));
+
     }
 
-    public void btnGuardar_action(){
-        String cedulaCliente=txtCedula.getText();
-        String nombreCliente=txtNombre.getText();
-        String apellidosCliente=txtApellidos.getText();
-        String marca=txtMarca.getText();
-        String matricula=txtMatricula.getText();
-        String modelo=txtModelo.getText();
-        String color=txtColor.getText();
-        String tipo=cbTipo.getValue();
-        String valor=txtValor.getText();
-        String mecanico=cbMecanicos.getValue();
-        String descripcion=txtDescripcion.getText();
-        Date fecha= Calendar.getInstance().getTime();
+    public void btnGuardar_action() {
+        String cedulaCliente = txtCedula.getText();
+        String nombreCliente = txtNombre.getText();
+        String apellidosCliente = txtApellidos.getText();
+        String marca = txtMarca.getText();
+        String matricula = txtMatricula.getText();
+        String modelo = txtModelo.getText();
+        String color = txtColor.getText();
+        String tipo = cbTipo.getValue();
+        String valor = txtValor.getText();
+        String mecanico = cbMecanicos.getValue();
+        String descripcion = txtDescripcion.getText();
 
-        boolean esValido=validarCampos(cedulaCliente,nombreCliente,apellidosCliente,marca,matricula,modelo,color,tipo,
-                mecanico,cbPago.getValue(),valor,descripcion);
+        boolean esValido = validarCampos(cedulaCliente, nombreCliente, apellidosCliente, marca, matricula, modelo, color, tipo,
+                mecanico, cbPago.getValue(), valor, descripcion);
 
-        if (!esValido){
+        if (!esValido) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registro de mantenimiento");
             alert.setHeaderText("Registro de mantenimiento");
@@ -95,19 +144,18 @@ public class MecanicoController {
             return;
         }
 
-        int valorVenta=Integer.parseInt(valor);
+        int valorVenta = Integer.parseInt(valor);
 
-        if(valorVenta<=0){
+        if (valorVenta <= 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registro de mantenimiento");
             alert.setHeaderText("Registro de mantenimiento");
             alert.setContentText("Precio de mantenimiento negativo");
             alert.showAndWait();
             return;
-        }
-        else{
-            if (cbPago.getValue().equals("Si")){
-                Mantenimiento mantenimiento=new Mantenimiento(matricula,color,marca,tipo,modelo,mecanico,nombreCliente,cedulaCliente,apellidosCliente,valorVenta,fecha,descripcion);
+        } else {
+            if (cbPago.getValue().equals("Si")) {
+                Mantenimiento mantenimiento = new Mantenimiento(matricula, color, marca, tipo, modelo, mecanico, nombreCliente, cedulaCliente, apellidosCliente, valorVenta, descripcion);
                 mantenimientoBsn.registrarMantenimientos(mantenimiento);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Registro de venta");
@@ -115,8 +163,7 @@ public class MecanicoController {
                 alert.setContentText("La venta fue exitoso");
                 alert.showAndWait();
                 limpiarCampos();
-            }
-            else{
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Registro de venta");
                 alert.setHeaderText("Registro de venta");
@@ -128,17 +175,16 @@ public class MecanicoController {
     }
 
 
-
-    private Boolean validarCampos(String ... campos){
-        for (int i=0;i<campos.length;i++){
-            if(campos[i]==null || "".equals(campos[i]) ){
+    private Boolean validarCampos(String... campos) {
+        for (int i = 0; i < campos.length; i++) {
+            if (campos[i] == null || "".equals(campos[i])) {
                 return false;
             }
         }
         return true;
     }
 
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         txtApellidos.clear();
         txtCedula.clear();
         txtColor.clear();

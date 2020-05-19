@@ -1,5 +1,6 @@
 package ProyectoFinal.model.Carros;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public abstract class Vehiculo {
@@ -7,7 +8,7 @@ public abstract class Vehiculo {
     private int valor;
     private Date fechaNegocio;
 
-    public Vehiculo(String matricula, String color, String marca, String tipo, String modelo, String nroCredencial, String nombreCliente, String idCliente, String apellidosCliente, int valor, Date fechaNegocio) {
+    public Vehiculo(String matricula, String color, String marca, String tipo, String modelo, String nroCredencial, String nombreCliente, String idCliente, String apellidosCliente, int valor) {
         this.matricula = matricula;
         this.color = color;
         this.marca = marca;
@@ -18,7 +19,7 @@ public abstract class Vehiculo {
         this.idCliente = idCliente;
         this.apellidosCliente = apellidosCliente;
         this.valor = valor;
-        this.fechaNegocio = fechaNegocio;
+        this.fechaNegocio = Calendar.getInstance().getTime();
     }
 
     public String getMatricula() {

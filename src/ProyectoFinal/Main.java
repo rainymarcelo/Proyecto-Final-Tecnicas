@@ -1,5 +1,6 @@
 package ProyectoFinal;
 
+import ProyectoFinal.controller.ContenedorPrincipalController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("view/contenedor-principal.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("view/contenedor-principal.fxml"));
+        Parent root = loader.load();
+        ContenedorPrincipalController controller=loader.getController();
+        controller.setPrimaryStage(primaryStage);
         primaryStage.setTitle("Mecanicos Don Jose");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();

@@ -5,6 +5,7 @@ import ProyectoFinal.bsn.VendedorBsn;
 import ProyectoFinal.bsn.exception.ObjetoYaExisteException;
 import ProyectoFinal.model.Personas.Mecanico;
 import ProyectoFinal.model.Personas.Vendedor;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,6 +38,30 @@ public class AdministradorController {
 
     @FXML
     public void initialize(){
+        txtIdentificacion.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")){
+                txtIdentificacion.setText(newValue.replaceAll("[^\\d]",""));
+            }
+        }));
+
+        txtCredencial.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")){
+                txtCredencial.setText(newValue.replaceAll("[^\\d]",""));
+            }
+        }));
+
+        txtNombre.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-z*")){
+                txtNombre.setText(newValue.replaceAll("[^\\sa-zA-z]",""));
+            }
+        }));
+
+        txtApellidos.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\sa-zA-Z*")){
+                txtApellidos.setText(newValue.replaceAll("[^\\sa-zA-Z]",""));
+            }
+        }));
+
         cbCargo.setItems(cargolist);
     }
 

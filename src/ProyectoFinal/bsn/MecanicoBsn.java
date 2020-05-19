@@ -4,6 +4,7 @@ import ProyectoFinal.bsn.exception.ObjetoYaExisteException;
 import ProyectoFinal.dao.MecanicoDao;
 import ProyectoFinal.dao.exception.LlaveDuplicadaException;
 import ProyectoFinal.dao.impl.MecanicoDAOList;
+import ProyectoFinal.dao.impl.MecanicoDaoNio;
 import ProyectoFinal.model.Personas.Mecanico;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class MecanicoBsn {
     private MecanicoDao mecanicoDao;
 
     public MecanicoBsn(){
-        this.mecanicoDao=new MecanicoDAOList();
+        this.mecanicoDao=new MecanicoDaoNio();
     }
 
     public void registrarMecanico(Mecanico mecanico) throws ObjetoYaExisteException{

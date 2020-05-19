@@ -6,8 +6,10 @@ public class Mantenimiento extends Vehiculo {
 
     private String descripcionMantenimiento;
 
-    public Mantenimiento(String matricula, String color, String marca, String tipo, String modelo, String nroCredencial, String nombreCliente, String idCliente, String apellidosCliente, int valor, Date fechaNegocio, String descripcionMantenimiento) {
-        super(matricula, color, marca, tipo, modelo, nroCredencial, nombreCliente, idCliente, apellidosCliente, valor, fechaNegocio);
+    public Mantenimiento(String matricula, String color, String marca, String tipo, String modelo,
+                         String nroCredencial, String nombreCliente, String idCliente, String apellidosCliente,
+                         int valor, String descripcionMantenimiento) {
+        super(matricula, color, marca, tipo, modelo, nroCredencial, nombreCliente, idCliente, apellidosCliente, valor);
         this.descripcionMantenimiento = descripcionMantenimiento;
     }
 
