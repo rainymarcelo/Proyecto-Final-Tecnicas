@@ -36,6 +36,14 @@ public class VendedorDaoNio implements VendedorDao {
 
     @Override
     public void registrarVendedor(Vendedor vendedor) throws LlaveDuplicadaException {
+        Optional<Vendedor> vendedorOptional=this.consultarVendedorPorId(vendedor.getId());
+        if (vendedorOptional.isPresent()){
+            throw new LlaveDuplicadaException(vendedor.getId());
+        }
+        vendedorOptional=this.consultarVendedorPorCredencial(vendedor.getNroCredencial());
+        if (vendedorOptional.isPresent()){
+            throw new LlaveDuplicadaException(vendedor.getNroCredencial());
+        }
         String vendedorString=parseVendedor2String(vendedor);
         byte[] datosRegistro=vendedorString.getBytes();
         ByteBuffer byteBuffer=ByteBuffer.wrap(datosRegistro);
@@ -57,12 +65,32 @@ public class VendedorDaoNio implements VendedorDao {
 
     @Override
     public Optional<Vendedor> consultarVendedorPorId(String id) {
-        return Optional.empty();
+        try(Stream<String> stream=Files.lines(ARCHIVO)){
+            Optional<String> vendedorString=stream
+                    .filter((vendedor->id.equals(vendedor.split(",")[0])))
+                    .findFirst();
+            if(vendedorString.isPresent()){
+                return Optional.of(parseVendedor2Object(vendedorString.get()));
+            }
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        return  Optional.empty();
     }
 
     @Override
     public Optional<Vendedor> consultarVendedorPorCredencial(String credencial) {
-        return Optional.empty();
+        try(Stream<String> stream=Files.lines(ARCHIVO)){
+            Optional<String> vendedorString=stream
+                    .filter((vendedor->credencial.equals(vendedor.split(",")[3])))
+                    .findFirst();
+            if(vendedorString.isPresent()){
+                return Optional.of(parseVendedor2Object(vendedorString.get()));
+            }
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        return  Optional.empty();
     }
 
     @Override

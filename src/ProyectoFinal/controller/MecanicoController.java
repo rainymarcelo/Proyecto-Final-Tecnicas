@@ -170,7 +170,6 @@ public class MecanicoController {
                 alert.setContentText("El cliente debe pagar para poder completar la venta");
                 alert.showAndWait();
             }
-
         }
     }
 
